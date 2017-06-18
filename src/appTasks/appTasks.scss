@@ -1,0 +1,600 @@
+//Variables media queries modal delete:
+$mediaQuery1: all and (max-width: 1280px);
+$mediaQuery2: all and (max-width: 1100px);
+$mediaQuery3: all and (max-width: 800px);
+
+//Variable media queries modal register, edit y delete:
+$mediaQuery4: all and (max-width: 500px);
+
+//Variable media queries modal register y edit:
+$mediaQuery5: all and (max-width: 767px);
+
+//Variables:
+$width-container: 89vw;
+$color-false:#B3E5FC;
+$color-true: #dff0d8;
+
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+
+//Header principal: 
+
+header{
+	position: abstolute;
+    width: 100%;
+	height: 22vh;
+	margin-bottom: 25px;
+	background-color: #37474F;
+	@media #{$mediaQuery4}{
+		height: 28vh;
+	}
+}
+
+.headerSuperior{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	@media #{$mediaQuery4}{
+		flex-direction: column;				
+	}
+}
+
+h2{
+	position: relative;
+	margin-top: 7px;
+	margin-bottom: 23px;
+	margin-left: 70px;
+	font-family: cursive;
+	color: whitesmoke;
+	font-weight: bold; 
+	@media #{$mediaQuery3}{
+		margin-left: 15px;
+		font-size: 28px;
+	}
+	@media #{$mediaQuery4}{
+		font-size: 28px;
+		margin-bottom: 5px;
+		text-align: center;
+	}
+}
+
+.searchTask{
+	position: relative;
+	width: 25vw;
+	margin-top: 8px;
+	margin-right: 70px;
+	@media #{$mediaQuery3}{
+		width: 40vw;
+		height: 6vh;
+		margin-right: 25px;
+		margin-top: 7px;
+	}
+	@media #{$mediaQuery4}{
+		width: 58vw;
+		height: 5vh;
+		font-size: 14px;
+		margin-right: 0;
+		left: 21vw;
+		text-align: center;		
+	}
+
+}
+
+.headerButtons{
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-between;
+	margin: 0px 70px 0px 70px;
+	@media #{$mediaQuery3}{
+		margin: 0px 15px 0px 12px;	
+	}
+	@media #{$mediaQuery4}{
+		display: block;
+		margin: -8px 15px 0 15px;
+	}
+
+	span{
+		font-family: cursive;
+		color: whitesmoke;
+		font-size: 20px;
+
+		@media #{$mediaQuery3}{
+			font-size: 14px;
+		}
+	}	
+}
+
+
+.divHeaderButtons{
+	@media #{$mediaQuery4}{
+		 margin: 10px 0 0 0;
+	}
+}
+	
+
+#btnDeleteTaskDone{
+	font-family: cursive;
+    margin: 0 8px 0 0;
+	@media #{$mediaQuery3}{
+		font-size: 12px;		
+		margin: -3px 8px 0px 0px;
+	}
+}
+
+.btnAddTask{
+	font-family: cursive;
+	@media #{$mediaQuery3}{
+		font-size: 12px;
+		margin: -3px 8px 0px 0px;
+	}
+}
+
+.hr1{
+	position: relative;
+	width: 100%;
+	margin-top: -8px;
+	margin-bottom: 12px;
+	border: 0;
+	border-top: 2px solid #eee;
+
+	@media #{$mediaQuery3}{
+		margin-top: 2px;
+        margin-bottom: 20px;
+	}
+	@media #{$mediaQuery4}{
+		margin-top: 8px;
+    	margin-bottom: 14px;
+	}
+
+}
+
+
+
+//Contenedor - Body:
+.input-group-btn:last-child>.btn {
+    margin-left: -1px;
+    transform: translate(-2px, -51PX);
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.btn{
+	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.taskContainer{
+	width: 91vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 18px 19px;
+    margin-bottom: 18px;
+    margin-right: 4px;
+    margin-left: 5%;
+    transform: translateX(-11px);
+	@media #{$mediaQuery3}{
+		grid-template-columns: repeat(1, 1fr);
+		width: 70vw;    
+    	margin-right: 0px;
+    	margin-left: 15%;
+	}
+	@media #{$mediaQuery4}{
+			width: 91vw;
+			margin-left: 5%;
+	}
+
+	&>.task{
+		width: $width-container / 2 - 0.2;
+		height: 47vh;
+		background-color: $color-false;
+		transition: .3s ease;
+		border-radius: 31px;
+		margin-right: 31px;
+
+		@media #{$mediaQuery3}{
+			width: 70vw;
+			margin-right: 0px;
+		}
+		@media #{$mediaQuery4}{
+			width: 91vw;
+		}
+
+		&.hecho-true{
+			background-color: $color-true;
+
+			.md-button.succes:hover.md-fab{
+				background: hsl(103, 19%, 78%)
+			}
+		}
+	}
+}
+
+
+
+.nameTask{
+	margin-top: 18px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+md-checkbox:last-of-type,
+.checkbox{
+	width: 20px;
+	margin: 0;
+	height: 12px;
+}
+
+.md-button.buttons, 
+.succes, 
+.danger{
+	width: 37px;
+	min-height: 37px;
+	transition: .3s ease;
+}
+
+.md-button.md-fab {
+	height: 40px;
+    width: 40px;
+	position: relative;	
+	margin: 0px 5px 0 0;
+}
+
+.md-button.succes{
+	background-color: #5cb85c;
+	&:hover.md-fab{
+		background-color: #449d44;
+	}
+}
+
+.md-fab .buttons .succes .ng-disabled{
+	background-color: red;
+}
+
+.md-button.danger{
+	background-color: #d9534f;
+	&:hover.md-fab{
+		background-color: #c9302c;
+	}
+}
+
+
+.contentTask{
+	width: 44.3vw;
+    position: relative;
+    height: 31vh;
+    margin: 0px 0px 0px 0px;
+	@media #{$mediaQuery3}{
+		 width: 70vw;	 
+	}
+	@media #{$mediaQuery4}{
+		 width: 91vw;	 
+	}	
+}
+
+
+.subtitle{
+	font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+	padding-top: 8px;
+}
+
+.subtitleValue{
+	margin: 0 0 -20px 0;
+    text-align: center;
+	color: grey;
+	font-size:15px;
+	@media #{$mediaQuery3}{
+		font-size: 14px;
+	}
+	@media #{$mediaQuery4}{
+		font-size: 12px;
+	}
+}
+
+.md-button[type="button"]:disabled{
+	background: hsl(103, 19%, 78%);
+}
+
+
+
+.buttonPosition{
+	position: relative;
+    width: 44.3vw;
+    height: 24.7vh;
+    bottom: 1.6em;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+	@media #{$mediaQuery3}{
+		 width: 70vw;	 
+	}	   
+	@media #{$mediaQuery4}{
+		 width: 91.2vw;	 
+	}	
+}
+
+
+.campTask{
+	margin-left: 20px;
+	float: left;
+}
+
+
+md-toolbar.header-div{
+	background-color: #37474F;
+	height: 16vh;
+	border-radius: 31px 31px 3px 2px;
+}
+
+
+
+
+
+// Organizar modal registrar:
+
+
+#myModal-Register .modal-dialog{
+   width: 40%;
+   @media #{$mediaQuery5}{
+	    width: 55%;
+   }
+   @media #{$mediaQuery4}{
+	    width: 88%;
+   }
+}
+
+#myModal-Register .modal-dialog .modal-content {
+   left: 0px;
+   @media #{$mediaQuery5}{
+		left: 37.5%;
+   }
+   @media #{$mediaQuery4}{
+		left: 3%;
+   }
+}
+
+#myModal-Register .modal-dialog .modal-content .modal-body .form-control, .spanRegister, .labelModal {
+   	position: relative;
+    width: 30vw;
+    margin: 8px 0px 0px 10px;
+    margin-right: 70px;
+
+	@media #{$mediaQuery5}{
+		width: 43vw;
+    }
+	
+	@media #{$mediaQuery4}{
+		width: 70vw;
+    }
+
+}
+
+#myModal-Register .modal-dialog .modal-content .modal-body .col-sm-10{
+    width: 90.333333%;
+    padding-right: 10px;
+    padding-left: 45px;
+	margin: 0px 0px -16px 0px;
+
+	@media #{$mediaQuery5}{
+		padding-right: 5px;
+		padding-left: 25px;
+    }
+}
+
+#myModal-Register .modal-dialog .modal-content .modal-body{
+	padding: 10px;
+}
+
+
+    
+
+// Organizar modal editar:
+#myModal-Edit .modal-dialog{
+   width: 40%;
+   @media #{$mediaQuery5}{
+	    width: 55%;
+   }
+   @media #{$mediaQuery4}{
+	    width: 88%;
+   }
+}
+
+#myModal-Edit .modal-dialog .modal-content {
+   left: 0px;
+   @media #{$mediaQuery5}{
+		left: 37.5%;
+   }
+   @media #{$mediaQuery4}{
+		left: 3%;
+   }
+}
+
+#myModal-Edit .modal-dialog .modal-content .modal-body .form-control, .spanEdit, .labelModal {
+   	position: relative;
+    width: 30vw;
+    margin: 8px 0px 0px 10px;
+    margin-right: 70px;
+
+	@media #{$mediaQuery5}{
+		width: 43vw;
+    }
+	
+	@media #{$mediaQuery4}{
+		width: 70vw;
+    }
+
+}
+
+#myModal-Edit .modal-dialog .modal-content .modal-body .col-sm-10{
+    width: 90.333333%;
+    padding-right: 10px;
+    padding-left: 45px;
+	margin: 0px 0px -16px 0px;
+
+	@media #{$mediaQuery5}{
+		padding-right: 5px;
+		padding-left: 25px;
+    }
+}
+
+#myModal-Edit .modal-dialog .modal-content .modal-body{
+	padding: 10px;
+}
+
+
+
+
+//Organizar modal delete:
+
+
+#myModal-Delete .modal-dialog {	
+	position: absolute;
+	top: 14.8%;
+	@media #{$mediaQuery1}{
+		width: 39%;		
+		right: 30.5%;		
+	}
+
+	@media #{$mediaQuery2}{
+		width: 50%;
+		right: 27%;
+	}
+
+	@media #{$mediaQuery3}{
+		width: 70%;
+		right: 15.5%;
+	}
+
+	@media #{$mediaQuery4}{
+		width: 90%;
+    	right: 4%;
+	}
+	
+}
+
+#myModal-Delete .modal-dialog .modal-content{
+		font-family: cursive;
+		font-size: 12px;
+
+		@media #{$mediaQuery1}{
+			width: 40vw;			
+		}
+
+		@media #{$mediaQuery2}{
+			width: 51vw;
+		}
+
+		@media #{$mediaQuery3}{
+			width: 70vw;
+		}
+
+		@media #{$mediaQuery4}{
+			width: 90vw;
+			font-size: 10px;
+		}
+				
+}
+
+
+//Validación de inputs - Modal registrar y modal edit: 
+.valid{
+    color: red;
+}
+
+input.ng-invalid:focus{
+    border: 1px solid red;
+    box-shadow: 0 0 4px red;
+}
+
+
+.alertDelete{
+	color: red;
+}
+
+
+
+//Quitar flechas internas al input type="number" y type="date"
+
+input[type='number'], input[type='date']{
+	-moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+
+
+// Contruction Checkbox: 
+
+.checkbox {
+	position: relative;
+    width: 40px;
+    margin: 0;
+    height: 40px;
+    padding-left: 0px;
+}
+
+.heckbox label{
+	position: relative;
+	width: 40px;
+    height: 40px;
+} 
+
+.checkbox label:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr{	
+    display: inline-block;
+    border: 3px solid whitesmoke;
+    border-radius: 50%;
+    width: 1.9em;
+    height: 1.9em;
+    right: 1.5em;
+    background-color: #37474F;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+    transition: .3s ease;
+}
+
+.checkbox .cr .cr-icon {
+    position: relative;
+    font-size: 1.6em;
+    line-height: 0;
+    top: 30%;
+    left: -1%;
+	color: whitesmoke;
+}
+
+
+.checkbox label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon{
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr{
+    opacity: .5;
+}
+
+
+

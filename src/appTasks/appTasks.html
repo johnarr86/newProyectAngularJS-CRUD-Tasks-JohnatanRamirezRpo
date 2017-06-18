@@ -1,0 +1,121 @@
+<!--PRESENTACIÓN SUPERIOR - HEADER-->
+<header>
+	<section class="headerSuperior">
+		<h2>Task Log</h2>
+		<input type="text" class="form-control searchTask" placeholder="Custom Search Of Tasks" ng-model="searchTask.taskName">
+	</section>
+
+	<hr class="hr1">	
+
+	<section class="headerButtons">			
+		<span align="center"><strong>{{remainingTask()}}</strong> task slopes of <strong>{{tasksList.length}}</strong> tasks existings</span>	
+		<div class="divHeaderButtons">
+			<button class="btn btn-danger btn-md"  id="btnDeleteTaskDone" ng-click="deleteTasksDone()">Delete Tasks Done</button>	
+			<button class="btn btn-info btn-md pull-right btnAddTask" data-toggle="modal" data-target="#myModal-Register" ng-click="emptyFieldsRegister()">Add New</button>
+		</div>		
+	</section>
+	
+</header>	
+
+
+<!--ALERTAS SOBRE REGISTRAR, MODIFICAR Y ELIMINAR-->
+<div class="alert alert-info" ng-if="message">
+		<a href="" class="close" ng-click="clearMessage()">&times;</a>
+		{{message}}
+</div>
+
+
+<!-- CONTENEDOR PRINCIPAL - BODY -->
+<div class="taskContainer">	
+
+
+	<div class="task md-whiteframe-2dp hecho-{{task.hecho}}" ng-repeat="task in tasksList | filter: searchTask">
+
+		<md-toolbar class="md-whiteframe-2dp header-div">
+			<h3 align="center" class="nameTask">{{$index+1}}. {{task.taskName | uppercase}}</h3>
+			<div class="buttonPosition">
+				<md-button class="md-fab buttons succes" data-toggle="modal" data-target="#myModal-Edit" ng-click="selectTask(task, $index)" ng-disabled="task.hecho"><i class="material-icons">mode_edit</i></md-button>
+				<md-button class="md-fab buttons danger" data-toggle="modal" data-target="#myModal-Delete" ng-click="selectTask(task, $index)"><i class="material-icons">delete_forever</i></md-button>	
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="" ng-model="task.hecho" ng-click="taskHecho($index)">
+						<span class="cr"><i class="material-icons cr-icon">done</i></span>
+					</label>
+				</div>
+			</div>
+		</md-toolbar>
+				
+		<div class="contentTask"> 
+			
+			<h6 class="subtitle">RESPONSABLE:</h6>
+			<p class="subtitleValue">{{task.taskResponsable}}</p>					
+			<br>
+
+			<h6 class="subtitle">EMAIL:</h6>
+			<p class="subtitleValue">{{task.taskEmail}}</p>
+			<br>
+
+			<h6 class="subtitle">PHONE:</h6>
+			<p class="subtitleValue">{{task.taskPhone}}</p>
+			<br>
+
+			<h6 class="subtitle">DATE:</h6>
+			<p class="subtitleValue">{{task.taskDate | date:'dd-MM-yyyy'}}</p>
+
+		</div>	
+
+	</div>
+</div>
+
+
+<!--CONSTRUCCIÓN DE MODALS-->
+
+<!--MODAL REGISTRAR:-->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal-Register">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">New Task Registration</h4>
+			</div>
+			<div class="modal-body">
+				<valid-fields-register-task></valid-fields-register-task>					
+			</div>	
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="saveTask()" ng-disabled="formRegister.$invalid">Save</button>
+    		</div>	
+		</div>
+	</div>
+</div>
+
+
+<!--MODAL EDITAR-->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal-Edit">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-disabled="formEdit.$invalid"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Edit This Task</h4>
+			</div>
+			<div class="modal-body">		
+				<valid-fields-edit-task></valid-fields-edit-task>							
+			</div>
+			 <div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal" ng-disabled="formEdit.$invalid">Close</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="formEdit.$invalid" ng-click="updateTask()">Save</button>
+				<span class="valid" ng-show="formEdit.phoneTask.$error.date">Required date</span>
+				<span class="valid" ng-show="formEdit.phoneTask.$error.required">Required date field</span>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<!--MODAL ELIMINAR:-->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal-Delete">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<valid-fields-delete-task></valid-fields-delete-task>			
+		</div>
+	</div>
+</div>
